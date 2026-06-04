@@ -5,7 +5,7 @@ import numpy as np
 import glob
 
 categories = ['cat', 'dog']
-model = load_model('./models/cat_or_dog_classification_0.864799976348877.h5')
+model = load_model('./models/cat_or_dog_classification_0.8532000184059143.h5')
 model.summary()
 
 img = Image.open('./ML_Data/cat_dog/test/cat.01.jpg')
