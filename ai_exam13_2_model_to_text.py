@@ -34,7 +34,7 @@ with h5py.File(filename, 'r') as f:
 
     for fidx,filter in enumerate(filters):
         for chidx,channel in enumerate(filter):
-            np.savetxt('./weights/conv2d_1_filter_ch{}.txt'.format(fidx, chidx), channel,
+            np.savetxt('./weights/conv2d_1_filter{}_ch{}.txt'.format(fidx, chidx), channel,
                        fmt= '%2x', delimiter=' ')
 
     int_conv2d_1_bias = (f['model_weights']['conv2d_1']['sequential']['conv2d_1']['bias']
@@ -50,3 +50,25 @@ with h5py.File(filename, 'r') as f:
     print(list(int_Dense_weights))
     print(int_Dense_weights.shape)
     np.savetxt('./weights/dense_weights.txt', int_Dense_weights,fmt='%2x', delimiter=' ')
+
+    int_Dense_bias = (f['model_weights']['dense']['sequential']['dense']['bias']
+                         [:] * 128).astype(int)
+    int_Dense_bias = int_Dense_bias & 0xFF
+    print(list(int_Dense_bias))
+    print(int_Dense_bias.shape)
+    np.savetxt('./weights/dense_bias.txt', int_Dense_bias,
+               fmt='%2x', delimiter=' ')
+
+    int_Dense_1_weights = (f['model_weights']['dense_1']['sequential']['dense_1']['kernel'][:] * 128).astype(int)
+    int_Dense_1_weights = int_Dense_1_weights & 0xFF
+    print(list(int_Dense_1_weights))
+    print(int_Dense_1_weights.shape)
+    np.savetxt('./weights/dense_1_weights.txt', int_Dense_1_weights, fmt='%2x', delimiter=' ')
+
+    int_Dense_1_bias = (f['model_weights']['dense_1']['sequential']['dense_1']['bias']
+                      [:] * 128).astype(int)
+    int_Dense_1_bias = int_Dense_1_bias & 0xFF
+    print(list(int_Dense_1_bias))
+    print(int_Dense_1_bias.shape)
+    np.savetxt('./weights/dense_1_bias.txt', int_Dense_1_bias,
+               fmt='%2x', delimiter=' ')
