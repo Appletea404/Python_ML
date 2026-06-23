@@ -65,3 +65,24 @@ test_accuracy = model.evaluate(x_test, y_test, verbose=0)[1]
 print('Final test set accuracy:', test_accuracy)
 model.save('cnn_mnist_micro_{:.3f}.h5'.format(test_accuracy))
 
+
+# score = model.evaluate(x_test, y_test, verbose=0)
+# print('Test loss:', score[0])
+# print('Test accuracy:', score[1])
+#
+# plt.plot(fit_hist.history['accuracy'])
+# plt.plot(fit_hist.history['val_accuracy'])
+# plt.title('Model accuracy')
+# plt.ylabel('Accuracy')
+# plt.xlabel('Epoch')
+# plt.show()
+#
+# my_sample = np.random.randint(0, 10000)
+# plt.imshow(X_test[my_sample], cmap='gray')
+# plt.show()
+# print(label[Y_test[my_sample]])
+# pred = model.predict(x_test[my_sample].reshape(-1, 28, 28, 1))
+# print(label[np.argmax(pred)])
+# print(pred)
+#
+# x_test[0].shape
